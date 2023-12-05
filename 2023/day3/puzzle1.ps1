@@ -103,8 +103,12 @@ for($y = 0; $y -lt $totalNumberOfLines; $y++){
             $buildingUpCurrentNumber = $false;
             $foundASymbolAroundCurrentNumber = $false;
         }
-        #Write-Host $rawIn[$y][$x];
-        #Write-Host "The character is $($rawIn[$y][$x]) and is there a symbol around it? $(checkSurrounding $rawIn $x $y)";
+    }
+    #Handle the edge case for a number at the end of a line
+    if($buildingUpCurrentNumber){
+        if($foundASymbolAroundCurrentNumber){
+            $finalSum += [int]$currentNumber;
+        }
     }
     
 }
